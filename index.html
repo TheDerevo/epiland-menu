@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Epiland Меню</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Фіолетова фірмова шапка */
+        .header {
+            background-color: #4c1d95; 
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Контейнер для списку кнопок */
+        .menu-container {
+            width: 90%;
+            max-width: 400px;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Загальний стиль кнопок */
+        .menu-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 12px;
+            border: 2px solid #4c1d95;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        /* Головні фіолетові кнопки */
+        .btn-primary {
+            background-color: #4c1d95;
+            color: #ffffff;
+        }
+
+        /* Стандартні білі кнопки */
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #4c1d95;
+        }
+
+        /* Ефект натискання */
+        .menu-btn:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">🎉 Epiland 🎉</div>
+    </div>
+
+    <div class="menu-container">
+
+        <button class="menu-btn btn-primary" onclick="startAnketa()">
+            <span class="icon">🎉</span> ЗАМОВИТИ СВЯТО
+        </button>
+
+        <button class="menu-btn btn-primary" onclick="clickBtn('Поповнити картку')">
+            <span class="icon">💳</span> ПОПОВНИТИ КАРТКУ
+        </button>
+
+        <button class="menu-btn btn-secondary" onclick="clickBtn('Атракціони')">
+            <span class="icon">🎡</span> АТРАКЦІОНИ
+        </button>
+
+        <button class="menu-btn btn-secondary" onclick="clickBtn('Кафе')">
+            <span class="icon">☕</span> КАФЕ
+        </button>
+
+        <button class="menu-btn btn-secondary" onclick="clickBtn('Зв\'язатися з нами')">
+            <span class="icon">📞</span> ЗВ'ЯЗАТИСЯ З НАМИ
+        </button>
+
+        <button class="menu-btn btn-secondary" onclick="clickBtn('Про нас')">
+            <span class="icon">ℹ️</span> ПРО НАС
+        </button>
+
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand(); // Розгортає вікно додатка на весь екран телефону
+
+        // Логіка для кнопки "ЗАМОВИТИ СВЯТО"
+        function startAnketa() {
+            // Передаємо боту спеціальний текст-маркер
+            tg.sendData("замовити_свято_через_веб");
+            // Закриваємо вікно додатка
+            tg.close();
+        }
+
+        // Логіка для інших інформаційних кнопок
+        function clickBtn(name) {
+            alert("Ви обрали розділ: " + name);
+        }
+    </script>
+
+</body>
+</html>
