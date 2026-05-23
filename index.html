@@ -7,33 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Epiland Меню</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #ffffff;
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+            background-color: #f8fafc;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: #1e293b;
         }
 
         /* Фіолетова фірмова шапка */
         .header {
             background-color: #4c1d95; 
             width: 100%;
-            padding: 20px 0;
+            padding: 22px 0;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(76, 29, 149, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffffff;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
@@ -44,17 +49,17 @@
             margin-top: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
         }
 
         /* Загальний стиль кнопок */
         .menu-btn {
             width: 100%;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 18px;
+            font-size: 15px;
+            font-weight: 800;
             text-transform: uppercase;
-            border-radius: 12px;
+            border-radius: 16px;
             border: 2px solid #4c1d95;
             cursor: pointer;
             display: flex;
@@ -63,28 +68,73 @@
             gap: 15px;
             transition: all 0.2s ease;
             box-sizing: border-box;
+            letter-spacing: 0.5px;
         }
 
         /* Головні фіолетові кнопки */
         .btn-primary {
             background-color: #4c1d95;
             color: #ffffff;
+            box-shadow: 0 4px 12px rgba(76, 29, 149, 0.15);
         }
 
         /* Стандартні білі кнопки */
         .btn-secondary {
             background-color: #ffffff;
             color: #4c1d95;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
         }
 
         /* Ефект натискання */
         .menu-btn:active {
-            transform: scale(0.98);
-            opacity: 0.9;
+            transform: scale(0.97);
+            opacity: 0.95;
         }
 
         .icon {
-            font-size: 20px;
+            font-size: 22px;
+        }
+
+        /* Стилі для блоку з популярними запитаннями */
+        .faq-container {
+            display: none; /* Спочатку приховано */
+            width: 90%;
+            max-width: 400px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+            border: 1px solid #e2e8f0;
+        }
+
+        .faq-item {
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 800;
+            font-size: 14px;
+            color: #4c1d95;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .faq-answer {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -96,8 +146,12 @@
 
     <div class="menu-container">
 
-        <button class="menu-btn btn-primary" onclick="clickBtn('Поповнити картку')">
-            <span class="icon">💳</span> ПОПОВНИТИ КАРТКУ
+        <button class="menu-btn btn-primary" onclick="startAnketa()">
+            <span class="icon">🎉</span> ЗАМОВИТИ СВЯТО
+        </button>
+
+        <button class="menu-btn btn-secondary" onclick="toggleFaq()">
+            <span class="icon">❓</span> ПОПУЛЯРНІ ЗАПИТАННЯ
         </button>
 
         <button class="menu-btn btn-secondary" onclick="clickBtn('Атракціони')">
@@ -114,17 +168,76 @@
 
     </div>
 
+    <div class="faq-container" id="faqBlock">
+        
+        <div class="faq-item">
+            <div class="faq-question">За скільки часу потрібно бронювати свято?</div>
+            <div class="faq-answer">Рекомендуємо бронювати завчасно, особливо на вихідні дні. У будні дні зазвичай можна забронювати свято за декілька днів до бажаної дати.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи можна продовжити анімаційну програму або банкетну кімнату по факту?</div>
+            <div class="faq-answer">Звичайно, якщо після Вас немає бронювання на кімнату і аніматор вільний.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи працює парк під час тривоги?</div>
+            <div class="faq-answer">Ми працюємо під час повітряної тривоги, але рекомендуємо всім спускатися в укриття, у разі підвищеної небезпеки у парку проходить загальна евакуація.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи можна скасувати свято і чи повертається передоплата?</div>
+            <div class="faq-answer">Можемо скасувати за декілька днів до свята і зробити офіційне повернення коштів. У випадку якщо у Вас замовлений тортик і кондитерська вже запустила його в роботу, його потрібно забрати. Якщо скасовуєте за день або в день свята, а у Вашому замовленні присутній аніматор — потрібно сплатити неустойку 500 грн.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Скільки діток дозволено на одного аніматора?</div>
+            <div class="faq-answer">6 дітей.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи немає пакетного тарифу який обʼєднує: атракціони, аніматора, банкетну залу та меню?</div>
+            <div class="faq-answer">На жаль, ні.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Від якого віку дозволена анімаційна програма?</div>
+            <div class="faq-answer">Від 3-х років.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи будуть 5 атракціонів доступними впродовж дня?</div>
+            <div class="faq-answer">На жаль, ні. В пакетний тариф входить: 5 атракціонів на вибір, два дитячих ігрових майданчики, які будуть безлімітними — усі інші атракціони по сеансу. Дітки з цього усього переліку обирають лише 5, до прикладу: ігровий майданчик (безлімітний), водяна гойдалка, автодром, Vr-квест та Vr-сінема.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Чи входить квест в пакетний тариф?</div>
+            <div class="faq-answer">На жаль, ні. Але його можна придбати окремо на касі нашого парку. Для цього необхідно придбати картку за 30 грн — поповнити на 220 грн/дитинка у будній день та 260 грн/дитинка у вихідний.</div>
+        </div>
+
+    </div>
+
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
-        tg.expand(); // Розгортає вікно додатка на весь екран телефону
+        tg.expand();
 
         // Логіка для кнопки "ЗАМОВИТИ СВЯТО"
         function startAnketa() {
-            // Передаємо боту спеціальний текст-маркер
             tg.sendData("замовити_свято_через_веб");
-            // Закриваємо вікно додатка
             tg.close();
+        }
+
+        // Функція для показу/приховування популярних запитань
+        function toggleFaq() {
+            const faqBlock = document.getElementById('faqBlock');
+            if (faqBlock.style.display === 'block') {
+                faqBlock.style.display = 'none';
+            } else {
+                faqBlock.style.display = 'block';
+                // Плавне скролення до запитань
+                faqBlock.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Логіка для інших інформаційних кнопок
