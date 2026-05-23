@@ -53,7 +53,7 @@
         }
 
         /* Загальний стиль кнопок */
-        .menu-btn {
+        .menu-btn, .menu-link {
             width: 100%;
             padding: 18px;
             font-size: 15px;
@@ -69,6 +69,7 @@
             transition: all 0.2s ease;
             box-sizing: border-box;
             letter-spacing: 0.5px;
+            text-decoration: none; /* Для посилань-кнопок */
         }
 
         /* Головні фіолетові кнопки */
@@ -86,55 +87,13 @@
         }
 
         /* Ефект натискання */
-        .menu-btn:active {
+        .menu-btn:active, .menu-link:active {
             transform: scale(0.97);
             opacity: 0.95;
         }
 
         .icon {
             font-size: 22px;
-        }
-
-        /* Стилі для блоку з популярними запитаннями */
-        .faq-container {
-            display: none; /* Спочатку приховано */
-            width: 90%;
-            max-width: 400px;
-            margin-top: 15px;
-            margin-bottom: 30px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            box-sizing: border-box;
-            border: 1px solid #e2e8f0;
-        }
-
-        .faq-item {
-            margin-bottom: 18px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 12px;
-        }
-
-        .faq-item:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            font-weight: 800;
-            font-size: 14px;
-            color: #4c1d95;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .faq-answer {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.5;
-            font-weight: 400;
         }
     </style>
 </head>
@@ -150,9 +109,9 @@
             <span class="icon">🎉</span> ЗАМОВИТИ СВЯТО
         </button>
 
-        <button class="menu-btn btn-secondary" onclick="toggleFaq()">
+        <a href="faq.html" class="menu-link btn-secondary">
             <span class="icon">❓</span> ПОПУЛЯРНІ ЗАПИТАННЯ
-        </button>
+        </a>
 
         <button class="menu-btn btn-secondary" onclick="clickBtn('Атракціони')">
             <span class="icon">🎡</span> АТРАКЦІОНИ
@@ -168,79 +127,16 @@
 
     </div>
 
-    <div class="faq-container" id="faqBlock">
-        
-        <div class="faq-item">
-            <div class="faq-question">За скільки часу потрібно бронювати свято?</div>
-            <div class="faq-answer">Рекомендуємо бронювати завчасно, особливо на вихідні дні. У будні дні зазвичай можна забронювати свято за декілька днів до бажаної дати.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи можна продовжити анімаційну програму або банкетну кімнату по факту?</div>
-            <div class="faq-answer">Звичайно, якщо після Вас немає бронювання на кімнату і аніматор вільний.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи працює парк під час тривоги?</div>
-            <div class="faq-answer">Ми працюємо під час повітряної тривоги, але рекомендуємо всім спускатися в укриття, у разі підвищеної небезпеки у парку проходить загальна евакуація.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи можна скасувати свято і чи повертається передоплата?</div>
-            <div class="faq-answer">Можемо скасувати за декілька днів до свята і зробити офіційне повернення коштів. У випадку якщо у Вас замовлений тортик і кондитерська вже запустила його в роботу, його потрібно забрати. Якщо скасовуєте за день або в день свята, а у Вашому замовленні присутній аніматор — потрібно сплатити неустойку 500 грн.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Скільки діток дозволено на одного аніматора?</div>
-            <div class="faq-answer">6 дітей.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи немає пакетного тарифу який обʼєднує: атракціони, аніматора, банкетну залу та меню?</div>
-            <div class="faq-answer">На жаль, ні.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Від якого віку дозволена анімаційна програма?</div>
-            <div class="faq-answer">Від 3-х років.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи будуть 5 атракціонів доступними впродовж дня?</div>
-            <div class="faq-answer">На жаль, ні. В пакетний тариф входить: 5 атракціонів на вибір, два дитячих ігрових майданчики, які будуть безлімітними — усі інші атракціони по сеансу. Дітки з цього усього переліку обирають лише 5, до прикладу: ігровий майданчик (безлімітний), водяна гойдалка, автодром, Vr-квест та Vr-сінема.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Чи входить квест в пакетний тариф?</div>
-            <div class="faq-answer">На жаль, ні. Але його можна придбати окремо на касі нашого парку. Для цього необхідно придбати картку за 30 грн — поповнити на 220 грн/дитинка у будній день та 260 грн/дитинка у вихідний.</div>
-        </div>
-
-    </div>
-
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
 
-        // Логіка для кнопки "ЗАМОВИТИ СВЯТО"
         function startAnketa() {
             tg.sendData("замовити_свято_через_веб");
             tg.close();
         }
 
-        // Функція для показу/приховування популярних запитань
-        function toggleFaq() {
-            const faqBlock = document.getElementById('faqBlock');
-            if (faqBlock.style.display === 'block') {
-                faqBlock.style.display = 'none';
-            } else {
-                faqBlock.style.display = 'block';
-                // Плавне скролення до запитань
-                faqBlock.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Логіка для інших інформаційних кнопок
         function clickBtn(name) {
             alert("Ви обрали розділ: " + name);
         }
